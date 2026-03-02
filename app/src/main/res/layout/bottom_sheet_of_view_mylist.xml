@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/bottomSheetLayout_viewMyList_containerId"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#E92A292F">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/bottomSheetLayout_viewMyList_pictureId"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/oppenheimer"
+            android:layout_width="45dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:scaleType="centerCrop"
+            android:layout_height="66dp"/>
+
+        <TextView
+            android:id="@+id/bottomSheetLayout_viewMyList_textId"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="The shawshank redemption added to My List successfully!"
+            android:textColor="@color/gray"
+            android:textSize="13dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bottomSheetLayout_viewMyList_viewItemsButtonId"
+            app:cardBackgroundColor="#00000000"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/autoradiographic"
+                android:gravity="center"
+                android:paddingTop="2dp"
+                android:text="VIEW MY LIST"
+                android:textColor="#FF002E"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</RelativeLayout>

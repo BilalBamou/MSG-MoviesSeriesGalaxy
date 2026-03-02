@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/customAlertDialogOf_deleteAccount_profilePic_RelativeLayoutId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/customAlertDialogOf_deleteAccount_profilePicId"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/oppenheimer"
+                    app:civ_border_color="@color/primaryColorOfApp"
+                    app:civ_border_width="1dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/customAlertDialogOf_deleteAccount_usernameId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/customAlertDialogOf_deleteAccount_profilePic_RelativeLayoutId"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="35dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/righteous"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="Achraf El masoudi"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+
+            <TextView
+                android:id="@+id/customAlertDialogOf_deleteAccount_descriptionId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/customAlertDialogOf_deleteAccount_usernameId"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="You can permanently delete your account from here. If you're sure about this and you choose to move ahead, all the data connected to this account will be deleted permanently. You will not be able to retrieve it in the future."
+                android:textColor="@color/colorOfComments"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/customAlertDialogOf_deleteAccount_desc2Id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/customAlertDialogOf_deleteAccount_descriptionId"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="Please type delete in the box below to continue."
+                android:textColor="@color/primaryColorOfApp"
+                android:textSize="14dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/customAlertDialogOf_deleteAccount_textInputLayoutId"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/customAlertDialogOf_deleteAccount_desc2Id"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:textColorHint="#BEBEBE"
+                app:boxStrokeColor="@color/text_input_layout_stroke_color_selector"
+                app:endIconCheckable="true"
+                app:hintEnabled="false"
+                app:endIconMode="clear_text"
+                app:endIconTint="#FFFFFF">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Type the word delete"
+                    android:textColor="#FFFFFF" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox_firstId"
+                android:layout_below="@id/customAlertDialogOf_deleteAccount_textInputLayoutId"
+                android:layout_marginTop="15dp"
+                android:textSize="13dp"
+                android:paddingLeft="10dp"
+                android:button="@drawable/checkbox_size"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="I understand that deleting my account will remove all my data permanently."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/checkBox_secondId"
+                android:layout_below="@id/checkBox_firstId"
+                android:layout_marginTop="5dp"
+                android:textSize="13dp"
+                android:paddingLeft="10dp"
+                android:button="@drawable/checkbox_size"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Yes, please delete my account."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/checkBox_secondId"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/customAlertDialogOf_deleteAccount_cancelButtonId"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@drawable/alertdialog_custom_cancelbtn"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Cancel"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/customAlertDialogOf_deleteAccount_deleteAccButtonId"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardCornerRadius="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@color/primaryColorOfApp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/customAlertDialogOf_deleteAccount_deleteAccButtonId_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="Delete Account"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/customAlertDialogOf_deleteAccount_deleteAccButtonId_loadingLottie"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:visibility="gone"
+                            app:lottie_autoPlay="true"
+                            app:lottie_colorFilter="@color/white"
+                            app:lottie_loop="true"
+                            app:lottie_rawRes="@raw/lottie_loading_animation"
+                            app:lottie_speed="1.5" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

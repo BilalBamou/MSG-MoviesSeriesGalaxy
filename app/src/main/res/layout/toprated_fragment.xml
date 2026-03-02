@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_ofBackground">
+
+    <com.google.android.material.tabs.TabLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/topRatedFragment_tablayoutId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_ofBackground"
+        app:tabGravity="fill"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@color/primaryColorOfApp"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="3dp"
+        app:tabMode="fixed"
+        app:tabInlineLabel="true"
+        app:tabSelectedTextColor="@color/primaryColorOfApp"
+        app:tabTextAppearance="@style/CustomTextAppearanceTab"
+        app:tabTextColor="#BEBEBE" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/topRatedFragment_viewPagerId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topRatedFragment_tablayoutId"
+        android:background="@color/color_ofBackground" />
+
+    <RelativeLayout
+        android:id="@+id/topRatedFragment_noInternet_relativeLayoutId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_ofBackground"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/no_internet_animation" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="You're offline"
+                android:textColor="@color/colorOfComments"
+                android:textSize="23dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:paddingBottom="60dp"
+                android:text="Please check your internet connection and try again."
+                android:textColor="@color/gray"
+                android:textSize="14dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/topRatedFragment_retryButtonId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:focusable="true"
+                app:cardCornerRadius="7dp"
+                android:layout_marginBottom="45dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#00000000"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:fontFamily="@font/autoradiographic"
+                    android:gravity="center"
+                    android:text="RETRY"
+                    android:paddingTop="2dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="#FF002E"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/customAlertDialogOf_editComment_containerId"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#2A292F">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <RelativeLayout
+               android:id="@+id/customAlertDialogOf_editComment_profilePic_RelativeLayoutId"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="30dp">
+
+               <de.hdodenhof.circleimageview.CircleImageView
+                   android:id="@+id/customAlertDialogOf_editComment_profilePicId"
+                   android:layout_width="90dp"
+                   android:layout_height="90dp"
+                   android:src="@drawable/oppenheimer"
+                   app:civ_border_color="@color/primaryColorOfApp"
+                   app:civ_border_width="1dp" />
+
+           </RelativeLayout>
+
+           <TextView
+               android:id="@+id/customAlertDialogOf_editComment_usernameId"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/customAlertDialogOf_editComment_profilePic_RelativeLayoutId"
+               android:layout_centerHorizontal="true"
+               android:layout_marginLeft="35dp"
+               android:layout_marginTop="15dp"
+               android:layout_marginRight="35dp"
+               android:fontFamily="@font/righteous"
+               android:gravity="center"
+               android:maxLines="2"
+               android:ellipsize="end"
+               android:text="Achraf El masoudi"
+               android:textColor="@color/white"
+               android:textSize="17dp" />
+
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_below="@+id/customAlertDialogOf_editComment_usernameId"
+               android:id="@+id/customAlertDialogOf_editComment_textInputLayoutId"
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginLeft="15dp"
+               android:layout_marginTop="40dp"
+               android:layout_marginRight="15dp"
+               android:textColorHint="#BEBEBE"
+               app:boxStrokeColor="@color/text_input_layout_stroke_color_selector"
+               app:endIconCheckable="true"
+               app:endIconMode="clear_text"
+               app:endIconTint="#FFFFFF">
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:layout_width="match_parent"
+                   android:hint="Edit your comment..."
+                   android:layout_height="wrap_content"
+                   android:textColor="#FFFFFF" />
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/customAlertDialogOf_editComment_textInputLayoutId"
+               android:layout_marginTop="40dp"
+               android:gravity="center_horizontal"
+               android:orientation="horizontal">
+
+               <androidx.cardview.widget.CardView
+                   android:id="@+id/customAlertDialogOf_editComment_cancelButtonId"
+                   android:layout_width="0dp"
+                   android:layout_height="40dp"
+                   android:layout_marginLeft="15dp"
+                   android:layout_marginRight="20dp"
+                   android:layout_marginBottom="25dp"
+                   android:layout_weight="1"
+                   android:clickable="true"
+                   android:focusable="true"
+                   android:foreground="?android:attr/selectableItemBackground"
+                   app:cardCornerRadius="5dp">
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:layout_gravity="center"
+                       android:background="@drawable/alertdialog_custom_cancelbtn"
+                       android:gravity="center">
+
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:gravity="center"
+                           android:text="Cancel"
+                           android:textAllCaps="false"
+                           android:textColor="#FFFFFF"
+                           android:textSize="14dp"
+                           android:textStyle="bold" />
+                   </LinearLayout>
+               </androidx.cardview.widget.CardView>
+
+               <androidx.cardview.widget.CardView
+                   android:id="@+id/customAlertDialogOf_editComment_saveButtonId"
+                   android:layout_width="0dp"
+                   android:layout_height="40dp"
+                   android:layout_marginRight="15dp"
+                   android:layout_marginBottom="25dp"
+                   android:layout_weight="1"
+                   android:clickable="true"
+                   android:focusable="true"
+                   android:foreground="?attr/selectableItemBackground"
+                   app:cardCornerRadius="5dp">
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:layout_gravity="center"
+                       android:background="@color/primaryColorOfApp"
+                       android:gravity="center">
+
+                       <TextView
+                           android:id="@+id/customAlertDialogOf_editComment_saveButtonId_textView"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_gravity="center"
+                           android:gravity="center"
+                           android:text="Save"
+                           android:textAllCaps="false"
+                           android:textColor="#FFFFFF"
+                           android:textSize="14dp"
+                           android:textStyle="bold" />
+
+                       <com.airbnb.lottie.LottieAnimationView
+                           android:id="@+id/customAlertDialogOf_editComment_saveButtonId_loadingLottie"
+                           android:layout_width="40dp"
+                           android:layout_height="40dp"
+                           android:layout_gravity="center"
+                           android:visibility="gone"
+                           app:lottie_autoPlay="true"
+                           app:lottie_colorFilter="@color/white"
+                           app:lottie_loop="true"
+                           app:lottie_rawRes="@raw/lottie_loading_animation"
+                           app:lottie_speed="1.5" />
+                   </LinearLayout>
+               </androidx.cardview.widget.CardView>
+
+           </LinearLayout>
+
+       </RelativeLayout>
+   </ScrollView>
+</RelativeLayout>

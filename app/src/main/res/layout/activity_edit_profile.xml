@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ofBackground"
+    tools:context=".profileActivities.editProfile.EditProfileActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/editProfileActivity_toolBarId"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/editProfileActivity_arrowBackId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="#00121212"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/arrow_back_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginBottom="1dp"
+                android:text="Edit profile"
+                android:textColor="#F0F3F8"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/editProfileActivity_toolBarId">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/editProfileActivity_profilePic_RelativeLayoutId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="50dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/editProfileActivity_profilePic"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/oppenheimer"
+                        app:civ_border_color="@color/primaryColorOfApp"
+                        app:civ_border_width="2dp" />
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/editProfileActivity_profilePic_loadingLottie"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_centerInParent="true"
+                        android:visibility="visible"
+                        app:lottie_autoPlay="true"
+                        app:lottie_colorFilter="@color/white"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/lottie_loading_animation"
+                        app:lottie_speed="1.5" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/editProfileActivity_profilePic_editIconId"
+                        android:layout_width="33dp"
+                        android:layout_height="33dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_alignBottom="@+id/editProfileActivity_profilePic"
+                        android:layout_alignRight="@+id/editProfileActivity_profilePic"
+                        app:cardBackgroundColor="@color/primaryColorOfApp"
+                        app:cardCornerRadius="18dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="0.6dp"
+                            android:layout_marginLeft="0.2dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/edit_profile_picture_icon" />
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editProfileActivity_usernameId"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:textColorHint="#BEBEBE"
+                    app:boxStrokeColor="@color/text_input_layout_stroke_color_selector"
+                    app:endIconCheckable="true"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="#FFFFFF">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Username"
+                        android:inputType="text"
+                        android:textColor="#FFFFFF" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/editProfileActivity_saveButtonId"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="30dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardCornerRadius="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="#FF002E"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/editProfileActivity_saveButtonId_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/autoradiographic"
+                            android:gravity="center"
+                            android:text="Save"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFFF"
+                            android:textSize="19dp"
+                            android:visibility="visible" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/editProfileActivity_saveButtonId_loadingLottie"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:visibility="gone"
+                            app:lottie_autoPlay="true"
+                            app:lottie_colorFilter="@color/white"
+                            app:lottie_loop="true"
+                            app:lottie_rawRes="@raw/lottie_loading_animation"
+                            app:lottie_speed="1.5" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

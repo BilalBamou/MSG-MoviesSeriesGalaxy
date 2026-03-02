@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2A292F"
+    tools:context=".ShowPictureOfMSActivity">
+
+    <LinearLayout
+        android:background="@color/color_ofBackground"
+        android:id="@+id/showPictureOfMSActivity_toolBarId"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/showPictureOfMSActivity_arrowBackId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="#00121212"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/arrow_back_icon" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/showPictureOfMSActivity_nameId"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="Name Of Movie or Serie"
+            android:layout_marginBottom="1dp"
+            android:textColor="#F0F3F8"
+            android:textSize="19dp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/showPictureOfMSActivity_moreBtnId"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginRight="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="#00121212"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/showPictureOfMSActivity_moreIconId"
+                android:layout_width="24dp"
+                android:layout_gravity="center"
+                android:layout_height="24dp"
+                android:src="@drawable/more_icon" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/showPictureOfMSActivity_pictureId"
+        android:layout_below="@id/showPictureOfMSActivity_toolBarId"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

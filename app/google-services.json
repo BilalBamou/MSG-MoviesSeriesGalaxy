@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "270551204686",
+    "project_id": "movies-series-galaxy",
+    "storage_bucket": "movies-series-galaxy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270551204686:android:dbd388027b4efc7500d41f",
+        "android_client_info": {
+          "package_name": "com.msg.msgalaxy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjRvX6JihhAPu8jHeNqrIY1XcKyZ4JqRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

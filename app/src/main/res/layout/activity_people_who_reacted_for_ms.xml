@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ofBackground"
+    tools:context=".MVCOfFires_dislikes.PeopleWhoReactedActivityForMS">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/peopleWhoReactedActivity_forMS_toolBarId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_ofBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/peopleWhoReactedActivity_forMS_arrowBackId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="#00121212"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/arrow_back_icon" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:text="People who reacted"
+                android:layout_marginBottom="1dp"
+                android:textColor="#F0F3F8"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/peopleWhoReactedActivity_forMS_tablayoutId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        app:tabIconTint="@null"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@color/primaryColorOfApp"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="3dp"
+        app:tabInlineLabel="true"
+        android:background="@color/color_ofBackground"
+        app:tabMode="fixed"
+        android:layout_below="@id/peopleWhoReactedActivity_forMS_toolBarId"
+        app:tabSelectedTextColor="@color/primaryColorOfApp"
+        app:tabTextAppearance="@style/CustomTextAppearanceTab"
+        app:tabTextColor="#BEBEBE"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/peopleWhoReactedActivity_forMS_viewPagerId"
+        android:layout_width="match_parent"
+        android:background="@color/color_ofBackground"
+        android:layout_below="@+id/peopleWhoReactedActivity_forMS_tablayoutId"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

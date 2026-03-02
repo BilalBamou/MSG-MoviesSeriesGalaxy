@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#BEBEBE</color>
+
+    <color name="color_backgroundcolorOfApp">#121212</color>
+    <color name="primaryColorOfApp">#FF002E</color>
+    <color name="shimmerColor">#E7E7E7</color>
+    <color name="colorOfComments">#F0F3F8</color>
+
+    <color name="color_ofBackground">#191C20</color>
+</resources>

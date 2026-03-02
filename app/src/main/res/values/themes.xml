@@ -1,0 +1,68 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MSG" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#FF002E</item>
+        <item name="colorPrimaryVariant">#121212</item>
+
+        <!-- for the bar that is above Toollbar -->
+        <item name="android:statusBarColor">@color/color_ofBackground</item>
+        <!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+        <!-- Customize your theme here. -->
+
+        <!-- for the color of the bar that is below the bottom navigation -->
+        <item name="android:navigationBarColor">@color/color_ofBackground</item>
+    </style>
+
+    <style name="Theme.MSG" parent="Base.Theme.MSG" />
+
+    <!-- Ripple color when click on a view -->
+    <style name="SelectableItemTheme">
+        <item name="colorControlHighlight">#27FF002E</item>
+    </style>
+    <style name="SelectableItemBackground">
+        <item name="android:theme">@style/SelectableItemTheme</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <!-- TabLayout Text Small Case -->
+    <style name="CustomTextAppearanceTab" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">@font/righteous</item>
+    </style>
+
+    <!-- Bottom Sheet Dialog Style -->
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
+    <!-- Style of Show Poster Of movies Or series -->
+    <style name="ShowPosterMovieOrSerie" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">#FF002E</item>
+        <item name="colorPrimaryVariant">#2A292F</item>
+        <item name="android:statusBarColor">#2A292F</item>
+        <item name="android:navigationBarColor">#2A292F</item>
+    </style>
+
+
+    <!--    The Splash Screen Theme -->
+    <style name="TheSplashScreen_Style" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:statusBarColor">@color/color_ofBackground</item>
+    </style>
+
+
+    <!-- Style of Toolbar-->
+    <style name="styleOfToolbar" >
+        <item name="android:textSize">21sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/kollektif</item>
+        <item name="singleLine">true</item>
+    </style>
+</resources>

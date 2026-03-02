@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/home_id"
+        android:title="Home"
+        app:showAsAction="always"
+        android:icon="@drawable/selected_home_icon"/>
+    <item android:id="@+id/search_id"
+        android:title="Search"
+        app:showAsAction="always"
+        android:icon="@drawable/selected_search_icon"/>
+    <item android:id="@+id/toprated_id"
+        android:title="Top Rated"
+        app:showAsAction="always"
+        android:icon="@drawable/selected_toprated_icon"/>
+    <item android:id="@+id/profile_id"
+        android:title="Me"
+        app:showAsAction="always"
+        android:icon="@drawable/selected_profile_icon"/>
+
+</menu>

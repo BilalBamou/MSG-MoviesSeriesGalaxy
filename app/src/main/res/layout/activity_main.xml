@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/fragment_containerId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigationId"
+        android:background="@color/color_ofBackground" />
+
+    <me.ibrahimsn.lib.NiceBottomBar
+        android:id="@+id/bottomNavigationId"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        app:backgroundColor="@color/color_ofBackground"
+        app:indicatorGravity="bottom"
+        app:iconSize="23dp"
+        app:textSize="10dp"
+        app:iconMargin="-3dp"
+        app:textColorActive="#FF002E"
+        app:textColor="@color/bottom_navigation_icon_tint"
+        app:indicatorColor="#FF002E"
+        app:menu="@menu/bottomnavigation_menu" />
+
+</RelativeLayout>
