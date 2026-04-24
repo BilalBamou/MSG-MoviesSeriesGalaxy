@@ -27,7 +27,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         setContentView(R.layout.activity_main)
+
+        val chatbotBtn = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.chatbotBtn)
+
+        chatbotBtn.setOnClickListener {
+            val bottomSheet = ChatbotBottomSheet()
+            bottomSheet.show(supportFragmentManager, "ChatbotBottomSheet")
+        }
 
         bottomNavigationView = findViewById(R.id.bottomNavigationId)
 

@@ -1,4 +1,4 @@
-plugins {
+    plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 
@@ -72,4 +72,9 @@ dependencies {
 
     // To enable zoom in and out with fingers for an ImageView
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
+    // those lines for the chatbot
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("org.json:json:20231013")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 }
