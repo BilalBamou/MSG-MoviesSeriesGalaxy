@@ -38,7 +38,7 @@ class ChatbotBottomSheet : DialogFragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
-        messages.add(ChatMessage("Hello! this is MSG AI Assistant. Ask me about movies.", false))
+        messages.add(ChatMessage("Hello! this is MSG AI Assistant 😊. Ask me about Cinematic Universe!.", false))
         adapter.notifyDataSetChanged()
 
         sendButton.setOnClickListener {
@@ -70,17 +70,30 @@ class ChatbotBottomSheet : DialogFragment() {
     private fun askAI(question: String) {
         val client = OkHttpClient()
 
+        val recentMessages = messages.takeLast(6)
+
+        val conversationHistory = recentMessages.joinToString("\n") {
+            if (it.isUser) {
+                "User: ${it.message}"
+            } else {
+                "Bot: ${it.message}"
+            }
+        }
+
         val json = JSONObject("""
         {
           "contents": [
             {
               "parts": [
                 {
-                  "text": "$question"
+                  "text": "You are MSG AI Assistant inside a movie app. Answer shortly and remember the conversation.\n$conversationHistory"
                 }
               ]
             }
-          ]
+          ],
+          "generationConfig": {
+            "maxOutputTokens": wherwh
+          }
         }
         """.trimIndent())
 
@@ -88,7 +101,7 @@ class ChatbotBottomSheet : DialogFragment() {
             .toRequestBody("application/json".toMediaTypeOrNull())
 
         val request = Request.Builder()
-            .url("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AIzaSyApWHBJ1bmdDgnpcrKu63_5F4icsypu4eM")
+            .url("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AIzaSyBR_D6YqkK3WJk3h92539apd9OQNuKCFIw")
             .addHeader("Content-Type", "application/json")
             .post(body)
             .build()
@@ -102,12 +115,30 @@ class ChatbotBottomSheet : DialogFragment() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val responseText = response.body?.string() ?: "No response"
+                val responseBody = response.body?.string() ?: "No response"
 
-                activity?.runOnUiThread {
-                    messages.add(ChatMessage(responseText, false))
-                    adapter.notifyDataSetChanged()
-                    recyclerView.scrollToPosition(messages.size - 1)
+                try {
+                    val jsonObject = JSONObject(responseBody)
+                    val candidates = jsonObject.getJSONArray("candidates")
+                    val content = candidates.getJSONObject(0).getJSONObject("content")
+                    val parts = content.getJSONArray("parts")
+                    val aiReplyRaw = parts.getJSONObject(0).getString("text")
+                    val aiReply = aiReplyRaw
+                        .replace("**", "")
+                        .replace("*", "")
+                        .replace("#", "")
+
+                    activity?.runOnUiThread {
+                        messages.add(ChatMessage(aiReply, false))
+                        adapter.notifyDataSetChanged()
+                        recyclerView.scrollToPosition(messages.size - 1)
+                    }
+
+                } catch (e: Exception) {
+                    activity?.runOnUiThread {
+                        messages.add(ChatMessage("Error reading response", false))
+                        adapter.notifyDataSetChanged()
+                    }
                 }
             }
         })

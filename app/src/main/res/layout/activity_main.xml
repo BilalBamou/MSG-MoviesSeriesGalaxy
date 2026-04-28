@@ -36,6 +36,9 @@
         android:layout_alignParentEnd="true"
         android:layout_above="@id/bottomNavigationId"
         android:layout_margin="16dp"
-        android:src="@android:drawable/ic_dialog_email"/>
+        android:src="@drawable/outer_logo"
+        app:maxImageSize="45dp"
+        app:backgroundTint="#B00020"
+        app:tint="@null"/>
 
 </RelativeLayout>
