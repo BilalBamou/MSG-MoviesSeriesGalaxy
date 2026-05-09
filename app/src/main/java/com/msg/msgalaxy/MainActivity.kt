@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.msg.msgalaxy.MVCOfComments_Reply.ReplyActivity
 import com.msg.msgalaxy.fragments.HomeFragment
 import com.msg.msgalaxy.fragments.ProfileFragment
 import com.msg.msgalaxy.fragments.SearchFragment
@@ -24,17 +26,18 @@ class MainActivity : AppCompatActivity() {
     private var bottomNavigationView : NiceBottomBar? = null
     private var backButtonPressedTime: Long = 0L
 
+    private lateinit var chatBtn: FloatingActionButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         setContentView(R.layout.activity_main)
 
-        val chatbotBtn = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.chatbotBtn)
+        chatBtn = findViewById(R.id.chatbotBtn)
 
-        chatbotBtn.setOnClickListener {
-            val bottomSheet = ChatbotBottomSheet()
-            bottomSheet.show(supportFragmentManager, "ChatbotBottomSheet")
+        chatBtn.setOnClickListener {
+            var intent = Intent(this@MainActivity , ChatBotActivity::class.java)
+            startActivity(intent)
         }
 
         bottomNavigationView = findViewById(R.id.bottomNavigationId)

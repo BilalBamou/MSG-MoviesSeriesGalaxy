@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <!-- this line is for chatbot -->
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -21,11 +18,15 @@
         android:roundIcon="@mipmap/msg_logo_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MSG"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ChatBotActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MVCOfViewAll.ViewAllActivity"
             android:exported="false"
@@ -91,15 +92,13 @@
             android:name=".SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/TheSplashScreen_Style">
+            android:theme="@style/TheSplashScreen_Style" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ChatbotActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"
@@ -109,7 +108,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.msg.msgalaxy.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true" >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />

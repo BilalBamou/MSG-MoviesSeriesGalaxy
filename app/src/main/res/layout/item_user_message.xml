@@ -5,12 +5,22 @@
     android:gravity="end"
     android:padding="8dp">
 
-    <TextView
-        android:id="@+id/userMessageText"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#B00020"
-        android:textColor="#FFFFFF"
-        android:padding="12dp"
-        android:textSize="16sp"/>
+        android:background="@drawable/chatbot_background"
+        android:backgroundTint="@color/primaryColorOfApp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <TextView
+            android:id="@+id/userMessageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:textSize="16sp"/>
+
+    </RelativeLayout>
 </LinearLayout>

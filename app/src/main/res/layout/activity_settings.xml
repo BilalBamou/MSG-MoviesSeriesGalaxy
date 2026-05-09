@@ -234,32 +234,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     android:layout_marginTop="-20dp"
-                    android:fontFamily="@font/kollektif"
-                    android:gravity="center"
-                    android:text="Developed by"
-                    android:textColor="@color/white"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/settingsActivity_developerId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/kollektif"
-                    android:gravity="center"
-                    android:text="Achraf EL MASOUDI"
-                    android:textColor="@color/primaryColorOfApp"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="12dp"
-                    android:gravity="center"
-                    android:text="Version 1.0.0"
+                    android:text="Version 1.0.26"
                     android:textColor="@color/gray"
                     android:textSize="13sp" />
 

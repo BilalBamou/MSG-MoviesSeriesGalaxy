@@ -37,6 +37,14 @@ class ChatAdapter(private val messages: List<ChatMessage>) :
             holder.textMessage.text = message.message
         } else if (holder is BotViewHolder) {
             holder.textMessage.text = message.message
+
+            if (message.message == "Thinking...") {
+                holder.textMessage.setTypeface(null, android.graphics.Typeface.ITALIC)
+                holder.textMessage.alpha = 0.6f
+            } else {
+                holder.textMessage.setTypeface(null, android.graphics.Typeface.NORMAL)
+                holder.textMessage.alpha = 1.0f
+            }
         }
     }
 

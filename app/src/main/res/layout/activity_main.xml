@@ -35,10 +35,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_above="@id/bottomNavigationId"
-        android:layout_margin="16dp"
-        android:src="@drawable/outer_logo"
-        app:maxImageSize="45dp"
-        app:backgroundTint="#B00020"
+        android:layout_margin="20dp"
+        app:borderWidth="20dp"
+        android:src="@drawable/ai_icon"
+        app:maxImageSize="35dp"
+        app:backgroundTint="#FF002E"
         app:tint="@null"/>
 
 </RelativeLayout>
