@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -18,6 +19,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ValueEventListener
 import com.msg.msgalaxy.com.msg.msgalaxy.ChatAdapter
 import okhttp3.Call
@@ -49,6 +51,9 @@ class ChatBotActivity : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
+    private lateinit var chatHistoryRef: DatabaseReference
+
+    private lateinit var newChatBtn: CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,23 +62,87 @@ class ChatBotActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         currentUser = firebaseAuth.currentUser!!
 
+        chatHistoryRef = FirebaseDatabase.getInstance()
+            .reference
+            .child("Users")
+            .child(currentUser.uid)
+            .child("chatBotHistory")
+            .child("messages")
+
         recyclerView = findViewById(R.id.chatBotActivity_recyclerViewId)
         messageEditText = findViewById(R.id.aboutMovieOrSerieActivity_commentEditTextId)
         sendMessageBtn = findViewById(R.id.aboutMovieOrSerieActivity_sendCommentBtnId)
         sendMessageBtnIcon = findViewById(R.id.aboutMovieOrSerieActivity_sendCommentBtnId_Icon)
         relativeLayout = findViewById(R.id.chatBotActivity_relativeViewId)
+        newChatBtn = findViewById(R.id.chatBotActivity_newChat)
 
         adapter = ChatAdapter(messages)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
         updateViewsVisibility()
-
         getUsername()
-
+        loadChatHistory()
         messageProcess()
-
         arrowBack()
+        setupNewChatButton()
+    }
+
+    private fun setupNewChatButton() {
+        newChatBtn.setOnClickListener {
+            if (messages.isEmpty()) {
+                return@setOnClickListener
+            }
+
+            showNewChatConfirmationDialog()
+        }
+    }
+
+    private fun showNewChatConfirmationDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("New Chat")
+            .setMessage("Start a new conversation?\nCurrent chat will be deleted.")
+            .setNegativeButton("Cancel", null)
+            .setPositiveButton("Clear Chat") { dialog, _ ->
+                startNewChat()
+                dialog.dismiss()
+            }
+            .setCancelable(true)
+            .show()
+    }
+
+    private fun startNewChat() {
+        chatHistoryRef.removeValue()
+
+        messages.clear()
+
+        adapter.notifyDataSetChanged()
+        updateViewsVisibility()
+    }
+    private fun loadChatHistory() {
+        chatHistoryRef.orderByChild("timestamp").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                messages.clear()
+
+                for (child in snapshot.children) {
+                    val text = child.child("message").getValue(String::class.java) ?: ""
+                    val isUser = child.child("isUser").getValue(Boolean::class.java) ?: false
+                    messages.add(ChatMessage(text, isUser))
+                }
+
+                adapter.notifyDataSetChanged()
+                updateViewsVisibility()
+
+                // Scroll to bottom
+                if (messages.isNotEmpty()) {
+                    recyclerView.scrollToPosition(messages.size - 1)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Optional: Show toast
+            }
+        })
     }
 
     private fun updateViewsVisibility() {
@@ -121,17 +190,29 @@ class ChatBotActivity : AppCompatActivity() {
             val text = messageEditText.editText?.text.toString().trim()
 
             if (text.isNotEmpty()) {
-                messages.add(ChatMessage(text, true))
+                val userMessage = ChatMessage(text, true)
+                messages.add(userMessage)
                 updateViewsVisibility()
-
                 adapter.notifyDataSetChanged()
                 recyclerView.scrollToPosition(messages.size - 1)
-
                 messageEditText.editText?.text?.clear()
 
+                saveMessageToFirebase(userMessage)
                 askAI(text)
             }
         }
+    }
+
+
+    private fun saveMessageToFirebase(chatMessage: ChatMessage) {
+        val messageId = chatHistoryRef.push().key ?: return
+
+        val messageMap = mapOf(
+            "message" to chatMessage.message,
+            "isUser" to chatMessage.isUser
+        )
+
+        chatHistoryRef.child(messageId).setValue(messageMap)
     }
 
     private fun askAI(question: String) {
@@ -170,7 +251,7 @@ class ChatBotActivity : AppCompatActivity() {
             .toRequestBody("application/json".toMediaType())
 
         val request = Request.Builder()
-            .url("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AIzaSyAuabBpHwhzphv3AmwlbD8RD-0bHFtxFPQ")
+            .url("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AIzaSyBMof6y6Z6oicBsEdOvWKm8dVoTcI3u8Xw")
             .post(requestBody)
             .build()
 
@@ -179,19 +260,20 @@ class ChatBotActivity : AppCompatActivity() {
             override fun onFailure(call: Call, e: IOException) {
                 this@ChatBotActivity.runOnUiThread {
                     messages.remove(typingPlaceholder)
-                    messages.add(ChatMessage("Please try again", false))
+                    val errorMsg = ChatMessage("Please try again", false)
+                    messages.add(errorMsg)
                     adapter.notifyDataSetChanged()
+                    saveMessageToFirebase(errorMsg)
                 }
             }
 
             override fun onResponse(call: Call, response: Response) {
                 val responseText = response.body?.string()
-
                 this@ChatBotActivity.runOnUiThread {
                     messages.remove(typingPlaceholder)
 
-                    if (!response.isSuccessful || responseText == null) {
-                        messages.add(ChatMessage("API Error: ${response.code}", false))
+                    val botMessage = if (!response.isSuccessful || responseText == null) {
+                        ChatMessage("API Error: ${response.code}", false)
                     } else {
                         try {
                             val jsonObject = JSONObject(responseText)
@@ -202,14 +284,17 @@ class ChatBotActivity : AppCompatActivity() {
                                 .getJSONArray("parts")
                                 .getJSONObject(0)
                                 .getString("text")
-
-                            messages.add(ChatMessage(reply.trim(), false))
+                            ChatMessage(reply.trim(), false)
                         } catch (e: Exception) {
-                            messages.add(ChatMessage("Parsing Error", false))
+                            ChatMessage("Parsing Error", false)
                         }
                     }
+
+                    messages.add(botMessage)
                     adapter.notifyDataSetChanged()
                     recyclerView.scrollToPosition(messages.size - 1)
+
+                    saveMessageToFirebase(botMessage)
                 }
             }
         })
